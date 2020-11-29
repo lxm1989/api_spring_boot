@@ -18,6 +18,23 @@ public class PlayerInfo {
 
 	private String time;
 
+	public PlayerInfo(int id, String playerName, int score, String time) {
+		this.id = id;
+		this.playerName = playerName;
+		this.score = score;
+		this.time = time;
+	}
+
+	public PlayerInfo(String playerName, int score, String time) {
+		this.playerName = playerName;
+		this.score = score;
+		this.time = time;
+	}
+	
+	public PlayerInfo() {
+		
+	}
+	
 	public Integer getId() {
 		return id;
 	}

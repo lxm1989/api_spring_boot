@@ -7,41 +7,49 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-
 @Service
 @Transactional
 public class PlayerInfoService {
 
-    private final PlayerInfoRepository playerInfoRepository;
+	private final PlayerInfoRepository playerInfoRepository;
 
-    @Autowired
-    public PlayerInfoService(PlayerInfoRepository playerInfoRepository) {
-        this.playerInfoRepository = playerInfoRepository;
-    }
-/*
-    public PlayerInfo createUser(PlayerInfo playerInfo) {
-        Optional<PlayerInfo> userOptional = playerInfoRepository.findByEmail(user.getEmail());
-        if(userOptional.isPresent()) {
-            throw new UserRegistrationException("User with email "+ user.getEmail()+" already exists");
-        }
+	@Autowired
+	public PlayerInfoService(PlayerInfoRepository playerInfoRepository) {
+		this.playerInfoRepository = playerInfoRepository;
+	}
 
-        return playerInfoRepository.save(playerInfo);
-    }
-*/
-    public PlayerInfo updateUser(PlayerInfo PlayerInfo) {
-        return playerInfoRepository.save(PlayerInfo);
-    }
+	
+	public PlayerInfo createPlayerInfo(PlayerInfo playerInfo) {
+		if (playerInfo.getId()!=null) {
+			Optional<PlayerInfo> playerInfoOptional = playerInfoRepository.findById(playerInfo.getId());
+			if (!(playerInfoOptional.isPresent())) {
+				return playerInfoRepository.save(playerInfo);
+			} else
+				throw new PlayerScoreExistException(
+						"PlayerID " + playerInfo.getId() + " already exists");
+		}
+			
+		return playerInfoRepository.save(playerInfo);
+	}
 
-    public Iterable<PlayerInfo> findAllUsers() {
-        return playerInfoRepository.findAll();
-    }
+	public Optional<PlayerInfo> findPlayerInfoById(Integer id) {
+		return playerInfoRepository.findById(id);
+	}
 
-    public Optional<PlayerInfo> findPlayerInfoById(Integer id) {
-        return playerInfoRepository.findById(id);
-    }
+	public void deletePlayerInfoById(Integer id) {
+		playerInfoRepository.deleteById(id);
+	}
+	
+	public List<PlayerInfo> findPlayerInfoByName(String name) {
+		return playerInfoRepository.findByPlayerName(name);
+	}
+	
+	public List<PlayerInfo> findPlayerInfoBeforeTime(String before) {
+		return playerInfoRepository.findBeforeTime(before);
+	}
+	
+	public List<PlayerInfo> findPlayerInfoAfterTime(String after) {
+		return playerInfoRepository.findAfterTime(after);
+	}
 
-    public void deleteUserById(Integer id) {
-    	playerInfoRepository.deleteById(id);
-    }
 }
-
