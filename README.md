@@ -6,12 +6,12 @@
   2) Run command: java -jar build/libs/demo-0.0.1-SNAPSHOT.jar  
 
 ## Instruction on how to run unit and integration tests.  
-  Use STS to do test.  
-  1.Find test class under Test folder.  
+&nbsp; &nbsp;Use STS to do test.  
+  1).Find test class under Test folder.  
     Test folder path: /demo/src/test/java  
     unit tests: MainControllerTest.java, PlayerInfoServiceTest.java  
     integration tests: IntegratedApplicationTests.java  
-  2.Rightly click test class file, click Run As=>Junit Test.  
+  2).Rightly click test class file, click Run As=>Junit Test.  
 
 ## Quick documentation of API.  
   Continue......
