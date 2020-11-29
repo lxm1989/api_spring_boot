@@ -5,7 +5,7 @@
 1. Use STS to build  
 2. Run command: java -jar build/libs/demo-0.0.1-SNAPSHOT.jar  
 
-## Instruction on how to run unit and integration tests.  
+## How to run unit and integration tests.  
 &nbsp; &nbsp;Use STS to do test.  
 1. Find test class under Test folder.  
 &nbsp; &nbsp;Test folder path: /demo/src/test/java  
